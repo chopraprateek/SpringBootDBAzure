@@ -1,0 +1,77 @@
+   1 docker ps
+   
+  12 docker build -t myappdocker .
+  13 docker images
+  14 docker run -d -p 80:8080 myappdocker
+  15 docker ps
+  16 docker stop 5f
+  17 docker stop 5f21
+  18 docker ps
+  19 docker run -d -p 8080:80 myappdocker
+  20 docker ps
+  21 docket stop 89c5
+  22 docker stop 89c5
+  23 docker run -d -p 80:80 myappdocker
+  
+  docker run -d<demon> -p<port> <laptop port:container port(specified in app properties file> <name of app>
+  
+  docker  run --name mysql-instance -e MYSQL_ROOT_PASSWORD=sql@123 -d -p 3306:3306 mysql 
+  
+  
+  
+PS C:\springboot\azure\azure> history
+
+  Id CommandLine
+  -- -----------
+  --below commnad will pull mysql image from dockerhub and run
+   1 docker  run --name mysql-instance -e MYSQL_ROOT_PASSWORD=sql@123 -d -p 3306:3306 mysql
+   2 docker ps
+   3 docker images
+   4 docker -rmi mysql
+   5 docker rmi mysql
+   6 docker rmi mysql -f
+   7 docker  run --name mysql-instance -e MYSQL_ROOT_PASSWORD=sql@123 -d -p 3306:3306 mysql
+   8 docker ps
+   9 docker images
+  10 docker  run --name mysql-instance -e MYSQL_ROOT_PASSWORD=sql@123 -d -p 3306:3306 mysql
+  11 docker images
+  12 docker images
+  13 docker rm 1ba4ee5188d808ae2a33ba48cf73760aa385538810428d8410554fb315d23175
+  14 docker  run --name mysql-instance -e MYSQL_ROOT_PASSWORD=sql@123 -d -p 3306:3306 mysql
+  15 docker ps
+  16 docker stop e4ce
+
+    Docker file to Azure
+  -- -----------
+
+   docker build -t mydockerapppc .
+
+   docker build -t mysql-image .
+
+   1 docker login myappregpc84.azurecr.io
+   2 docker tag mysql-image:latest myappregpc84.azurecr.io/mysql-image:latest
+   3 docker push myappregpc84.azurecr.io/mysql-image:latest
+
+   docker build -t mydockerapppc .
+   docker tag mydockerapppc:latest myappregpc84.azurecr.io/mydockerapppc:latest
+   docker push myappregpc84.azurecr.io/mydockerapppc:latest
+   
+   custom docker image
+   
+   ----------------
+   
+   docker build -t mysql-image .
+   
+   docker run --name mysql-instance -d -p 3306:3306 mysql-image
+   
+   
+   --------------------------
+   
+   
+   Using Azure Container Groups - Resources
+1. The following command is used to create the Azure Container Group
+
+az container create --resource-group myappPc_group --file application-deployment.yml
+
+
+

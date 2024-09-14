@@ -1,0 +1,5 @@
+az containerapp env create --name "myapppc-env" --resource-group "parteekc_rg" --location "Central India"
+
+az containerapp create --name "mysql-service" --resource-group "parteekc_rg" --environment "myapppc-env"--image myappregpc84.azurecr.io/mysql-image:latest --target-port 3306 --exposed-port 3306 --transport tcp --ingress 'internal' --registry-server myappregpc84.azurecr.io --query properties.configuration.ingress.fqdn
+
+az containerapp create --name "myapppc-service" --resource-group "parteekc_rg" --environment "myapppc-env" --image "myappregpc84.azurecr.io/mydockerapppc:latest" --target-port 80 --ingress 'external' --registry-server myappregpc84.azurecr.io --query properties.configuration.ingress.fqdn

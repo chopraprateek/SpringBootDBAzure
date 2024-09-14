@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydockerapppc
+spec:
+  selector:
+    matchLabels:
+      app: mydockerapppc
+  template:
+    metadata:
+      labels:
+        app: mydockerapppc
+    spec:
+      containers:
+      - image: myappregpc84.azurecr.io/mydockerapppc:latest
+        name: mydockerapppc
+        ports:
+        - containerPort: 80
+          name: mydockerapppc
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqlinstance
+spec:
+  selector:
+    matchLabels:
+      app: mysqlinstance
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysqlinstance
+    spec:
+      containers:
+      - image: myappregpc84.azurecr.io/mysql-image:latest
+        name: mysqlinstance
+        ports:
+        - containerPort: 3306
+          name: mysqlinstance
